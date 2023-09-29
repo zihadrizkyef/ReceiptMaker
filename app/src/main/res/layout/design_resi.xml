@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="1000dp"
+    android:layout_height="wrap_content"
+    android:paddingVertical="24dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="800dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="120dp"
+        android:alpha="0.1"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/hintTotalPrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/valueKelas"
+        app:srcCompat="@drawable/lunas" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:text="Invoice"
+        android:textColor="#000"
+        android:textSize="32sp"
+        app:fontFamily="@font/lato_black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/hintPembeli"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="128dp"
+        android:layout_marginTop="40dp"
+        android:text="Pembeli"
+        android:textColor="#888"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textTitle" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/hintKelas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Kelas"
+        android:textColor="#888"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/hintPembeli"
+        app:layout_constraintTop_toBottomOf="@id/hintPembeli" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/valuePembeli"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="60dp"
+        android:textColor="#008000"
+        android:textSize="16sp"
+        app:fontFamily="@font/lato_bold"
+        app:layout_constraintBottom_toBottomOf="@+id/hintPembeli"
+        app:layout_constraintStart_toEndOf="@id/hintPembeli"
+        app:layout_constraintTop_toTopOf="@+id/hintPembeli"
+        tools:text=": Zihad" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/valueKelas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#008000"
+        android:textSize="16sp"
+        app:fontFamily="@font/lato_bold"
+        app:layout_constraintBottom_toBottomOf="@+id/hintKelas"
+        app:layout_constraintStart_toStartOf="@id/valuePembeli"
+        app:layout_constraintTop_toTopOf="@+id/hintKelas"
+        tools:text=": Bahasa Arab" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="128dp"
+        android:minHeight="200dp"
+        android:layout_marginTop="32dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@+id/hintKelas"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_pembelian" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/valueTotalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:textColor="#008000"
+        android:textSize="32sp"
+        app:fontFamily="@font/lato_bold"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerView"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+        tools:text="Rp 1.580.000" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/hintTotalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="TOTAL"
+        android:textColor="#888"
+        android:textSize="32sp"
+        app:fontFamily="@font/lato_light"
+        app:layout_constraintBottom_toBottomOf="@+id/valueTotalPrice"
+        app:layout_constraintStart_toStartOf="@+id/recyclerView"
+        app:layout_constraintTop_toTopOf="@+id/valueTotalPrice" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

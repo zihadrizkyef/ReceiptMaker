@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="8dp">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textNameQty"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/lato_regular"
+        android:maxLines="1"
+        app:layout_constraintEnd_toStartOf="@+id/textTotal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="2 x Durusul Lughoh" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintEnd_toEndOf="@+id/textNameQty"
+        app:layout_constraintStart_toStartOf="@+id/textNameQty"
+        app:layout_constraintTop_toBottomOf="@+id/textNameQty"
+        tools:text="28.000" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textTotal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="end"
+        android:maxLines="1"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textPrice"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDelete"
+        app:layout_constraintTop_toTopOf="@+id/textNameQty"
+        tools:text="56.000" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/buttonDelete"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        app:contentPadding="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textPrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textNameQty"
+        app:srcCompat="@drawable/ic_clear"
+        app:tint="#FF0000" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
