@@ -23,9 +23,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val items = arrayListOf<Item>()
     private val adapter: ItemAdapter by lazy {
-        ItemAdapter(items) {
+        ItemAdapter() {
             items.remove(it)
-            adapter.notifyDataSetChanged()
+            adapter.submitList(items)
         }
     }
 
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                 val qty = it.data?.getStringExtra("qty")
                 val item = Item(name, price?.toIntOrNull() ?: 0, qty?.toIntOrNull() ?: 0)
                 items.add(item)
-                adapter.notifyDataSetChanged()
+                adapter.submitList(items)
             }
         }
 
@@ -67,9 +67,9 @@ class MainActivity : AppCompatActivity() {
         val viewBinding = DesignResiBinding.inflate(layoutInflater)
         viewBinding.valueKelas.text = binding.inputClass.text.toString()
         viewBinding.valuePembeli.text = binding.inputName.text.toString()
-        viewBinding.recyclerView.adapter = ItemAdapter(items, null).apply {
+        viewBinding.recyclerView.adapter = ItemAdapter(null).apply {
             isShowDeleteButton = false
-            notifyDataSetChanged()
+            submitList(items)
         }
         viewBinding.valueTotalPrice.text = decimalFormat.format(items.sumOf { it.price * it.qty })
 

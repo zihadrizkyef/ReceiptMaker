@@ -9,7 +9,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.zhd.receiptmaker.databinding.ItemPembelianBinding
 import java.text.DecimalFormat
 
-class ItemAdapter(private val items: List<Item>, private val onDeleteClick: ((item: Item) -> Unit)?) : RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
+class ItemAdapter(private val onDeleteClick: ((item: Item) -> Unit)?) : ListAdapter<Item, ItemAdapter.ViewHolder>(
+    object: DiffUtil.ItemCallback<Item>() {
+        override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
+            return oldItem == newItem
+        }
+    }
+) {
 
     var isShowDeleteButton = true
     private val numberFormat = DecimalFormat.getNumberInstance()
@@ -20,12 +30,8 @@ class ItemAdapter(private val items: List<Item>, private val onDeleteClick: ((it
         return ViewHolder(binding)
     }
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = with(holder.binding) {
-        val item = items[position]
+        val item = getItem(position)
         textNameQty.text = numberFormat.format(item.qty) + " x " + item.name
         textPrice.text = numberFormat.format(item.price)
         textTotal.text = numberFormat.format(item.price * item.qty)
