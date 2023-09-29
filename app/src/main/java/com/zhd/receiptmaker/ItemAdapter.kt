@@ -10,9 +10,9 @@ import com.zhd.receiptmaker.databinding.ItemPembelianBinding
 import java.text.DecimalFormat
 
 class ItemAdapter(private val onDeleteClick: ((item: Item) -> Unit)?) : ListAdapter<Item, ItemAdapter.ViewHolder>(
-    object: DiffUtil.ItemCallback<Item>() {
+    object : DiffUtil.ItemCallback<Item>() {
         override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
-            return oldItem == newItem
+            return oldItem === newItem
         }
 
         override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {

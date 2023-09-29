@@ -21,11 +21,9 @@ import java.util.UUID
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val items = arrayListOf<Item>()
     private val adapter: ItemAdapter by lazy {
-        ItemAdapter() {
-            items.remove(it)
-            adapter.submitList(items)
+        ItemAdapter {
+            adapter.submitList(adapter.currentList.toMutableList().apply { remove(it) })
         }
     }
 
@@ -36,8 +34,8 @@ class MainActivity : AppCompatActivity() {
                 val price = it.data?.getStringExtra("price")
                 val qty = it.data?.getStringExtra("qty")
                 val item = Item(name, price?.toIntOrNull() ?: 0, qty?.toIntOrNull() ?: 0)
-                items.add(item)
-                adapter.submitList(items)
+
+                adapter.submitList(adapter.currentList.toMutableList().apply { add(item) })
             }
         }
 
@@ -69,9 +67,9 @@ class MainActivity : AppCompatActivity() {
         viewBinding.valuePembeli.text = binding.inputName.text.toString()
         viewBinding.recyclerView.adapter = ItemAdapter(null).apply {
             isShowDeleteButton = false
-            submitList(items)
+            submitList(adapter.currentList.toMutableList())
         }
-        viewBinding.valueTotalPrice.text = decimalFormat.format(items.sumOf { it.price * it.qty })
+        viewBinding.valueTotalPrice.text = decimalFormat.format(adapter.currentList.sumOf { it.price * it.qty })
 
         val widthInDp = 1000
         val widthInPixels = (widthInDp * resources.displayMetrics.density).toInt()
